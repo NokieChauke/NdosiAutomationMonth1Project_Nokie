@@ -1,5 +1,6 @@
 package Pages;
 
+import Utilities.BrowserFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -94,6 +95,9 @@ public class LearnPage {
 
     @FindBy(id = "invoice-history-panel")
     WebElement invoiceHistoryPanel;
+
+    @FindBy(xpath = ("//*[contains(@id, 'view-invoice-INV')]"))
+    WebElement viewInvoiceButton;
 
 
 
@@ -269,6 +273,18 @@ public class LearnPage {
             throw new AssertionError("Invoice history panel is not displayed after clicking View Invoice.");
         }
     }
-    //Click View on invoice → Invoice opens with all order details.
 
+    public void clickViewInvoiceDetails() {
+        viewInvoiceButton.click();
+    }
+
+    public void invoiceDetailsDisplayed() {
+        BrowserFactory browserFactory = new BrowserFactory();
+        String expectedUL = "https://ndosisimplifiedautomation.vercel.app";
+        String actualURL = browserFactory.getCurrentURL();
+        if (!actualURL.contains(expectedUL)) {
+            throw new AssertionError(
+                    "Invoice details not displayed.");
+        }
+    }
 }

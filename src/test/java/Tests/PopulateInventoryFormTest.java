@@ -65,11 +65,9 @@ public class PopulateInventoryFormTest extends LoginTest {
         learnPage.clickViewInvoice();
         Thread.sleep(2000);
         learnPage.invoiceHistoryPanelDisplayed();
-
-        /*
-
-            Click View on invoice → Invoice opens with all order details.
-
-         */
+        Thread.sleep(2000);
+        learnPage.clickViewInvoiceDetails();
+        Thread.sleep(2000);
+        learnPage.invoiceDetailsDisplayed();
     }
 }

@@ -27,5 +27,9 @@ public class BrowserFactory {
         driver.manage().window().maximize();
         driver.get(url);
         return driver;
+
+    }
+    public String getCurrentURL() {
+        return driver.getCurrentUrl();
     }
 }
