@@ -5,6 +5,8 @@ import Pages.LearnPage;
 import Utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
 
@@ -13,8 +15,18 @@ public class BaseTest {
      public final String url = "https://ndosisimplifiedautomation.vercel.app/";
      public final String browserChoice = "chrome";
 
-     public final WebDriver driver = BrowserFactory.startBrowser(browserChoice, url);
-     public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+     public WebDriver driver;
+     public LoginPage loginPage;
      public LearnPage learnPage = PageFactory.initElements(driver, LearnPage.class);
 
+    @BeforeClass
+    public void setUp() {
+        driver = browserFactory.startBrowser(browserChoice, url);
+        loginPage  =new LoginPage(driver);
+    }
+
+    @AfterClass
+    public void tearDown() {
+        browserFactory.closeBrowser();
+    }
 }

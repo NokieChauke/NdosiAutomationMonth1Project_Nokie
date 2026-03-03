@@ -9,12 +9,9 @@ public class LoginTest extends BaseTest {
     public void loginWithValidDetails() throws InterruptedException {
 
         loginPage.clickLoginButton();
-        Thread.sleep(2000);
-        loginPage.enterEmailAddress("Nokiechauke@gmail.com");
-        loginPage.enterPassword("MuyiWaMina#1");
-        Thread.sleep(2000);
+        loginPage.enterEmailAddress("nokietest@mail.com");
+        loginPage.enterPassword("125abc!Test");
         loginPage.clickSubmitButton();
-        Thread.sleep(3000);
         loginPage.verifyLoginSuccess("Welcome back, Nokie! \uD83D\uDC4B");
     }
 

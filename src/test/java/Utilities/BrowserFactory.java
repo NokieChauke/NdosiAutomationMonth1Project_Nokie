@@ -32,4 +32,10 @@ public class BrowserFactory {
     public String getCurrentURL() {
         return driver.getCurrentUrl();
     }
+
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
