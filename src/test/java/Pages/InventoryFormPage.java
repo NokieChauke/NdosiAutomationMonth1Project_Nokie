@@ -28,10 +28,10 @@ public class InventoryFormPage {
     @FindBy(id = "brand")
     WebElement brandDropdown;
 
-    @FindBy(xpath = "//*[@id=\"device-preview\"]/div/img")
+    @FindBy(xpath = "//div[@data-testid='device-preview']")
     WebElement imagePreview;
 
-    @FindBy(xpath = "//*[@id=\"inventory-form-grid\"]/div[4]/div/label[2]")
+    @FindBy(xpath = "//input[@name='storage' and @value='128GB']")
     WebElement storageSizeRadioButton;
 
     @FindBy(id = "unit-price-value")
@@ -40,7 +40,7 @@ public class InventoryFormPage {
     @FindBy(id = "color")
     WebElement colorDropdown;
 
-    @FindBy(xpath = "//*[@id=\"device-preview\"]/div/div/div[3]/strong[1]")
+    @FindBy(xpath = "//div[@data-testid='device-preview']//strong[contains(text(),'blue')]")
     WebElement deviceColor;
 
     @FindBy(id = "quantity")

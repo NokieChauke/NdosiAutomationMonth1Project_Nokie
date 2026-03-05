@@ -20,10 +20,10 @@ public class LearnNavigationPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@id=\"app-root\"]/nav/div[1]/div[2]/div[1]/button")
+    @FindBy(xpath = "//button[.//span[text()='Learn']]")
     WebElement learnButton;
 
-    @FindBy(xpath = "//*[@id=\"app-root\"]/nav/div[1]/div[2]/div[1]/div/button[2]")
+    @FindBy(xpath = "//button[.//span[normalize-space()='Learning Materials']]")
     WebElement learningMaterialsButton;
 
     @FindBy(id = "tab-btn-web")
