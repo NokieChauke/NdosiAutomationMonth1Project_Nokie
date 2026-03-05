@@ -1,0 +1,3 @@
+Email,Password,ExpectedMessage
+nokietest@mail.com,125abc!Test,Welcome back, Nokie! 😀
+invalid@email.com,wrongpassword,Invalid credentials

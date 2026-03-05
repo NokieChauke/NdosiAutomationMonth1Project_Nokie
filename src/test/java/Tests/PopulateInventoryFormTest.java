@@ -1,29 +1,30 @@
 package Tests;
 
+import Utilities.TestDataProvider;
 import org.testng.annotations.Test;
 
 public class PopulateInventoryFormTest extends LoginTest {
 
-    @Test
-    public void inventoryFormTest() throws InterruptedException {
+    @Test(dataProvider = "inventoryData", dataProviderClass = TestDataProvider.class)
+    public void inventoryFormTest(String deviceType, String brand, String unitPrice, String color, String colorValue, String quantity, String subtotal, String address) {
 
-        loginWithValidDetails();
+        loginWithDefaultCredentials();
         learnNavigationPage.goToLearnPage();
         learnNavigationPage.viewLearningMaterials();
         learnNavigationPage.openWebAdvanceAutomationPage();
         learnNavigationPage.viewAssessmentInstructions();
-        inventoryFormPage.selectDeviceType();
+        inventoryFormPage.selectDeviceType(deviceType);
         inventoryFormPage.brandDropdownIsEnabled();
-        inventoryFormPage.selectBrand();
+        inventoryFormPage.selectBrand(brand);
         inventoryFormPage.devicePreviewPanelDisplayed();
         inventoryFormPage.selectStorageSize();
-        inventoryFormPage.unitPriceDisplayed();
-        inventoryFormPage.selectColor();
-        inventoryFormPage.colorSelectionApplied();
-        inventoryFormPage.enterQuantity();
-        inventoryFormPage.subtotalDisplayed();
-        inventoryFormPage.enterAddress();
-        inventoryFormPage.addressFieldIsFilled();
+        inventoryFormPage.unitPriceDisplayed(unitPrice);
+        inventoryFormPage.selectColor(color);
+        inventoryFormPage.colorSelectionApplied(colorValue);
+        inventoryFormPage.enterQuantity(quantity);
+        inventoryFormPage.subtotalDisplayed(subtotal);
+        inventoryFormPage.enterAddress(address);
+        inventoryFormPage.addressFieldIsFilled(address);
         inventoryFormPage.clickNextButton();
         orderSummaryPage.orderSummaryDisplayed();
         orderSummaryPage.selectExpressShipping();

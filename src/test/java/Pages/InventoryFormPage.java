@@ -55,33 +55,30 @@ public class InventoryFormPage {
     @FindBy(id = "inventory-next-btn")
     WebElement nextButton;
 
-    public void selectDeviceType() {
+    public void selectDeviceType(String deviceType) {
         wait.until(ExpectedConditions.elementToBeClickable(deviceTypeDropdown));
         dropdown = new Select(deviceTypeDropdown);
-        dropdown.selectByVisibleText("Phone");
+        dropdown.selectByVisibleText(deviceType);
     }
 
     public void brandDropdownIsEnabled() {
         wait.until(ExpectedConditions.elementToBeClickable(brandDropdown));
         if (!brandDropdown.isEnabled()) {
             throw new AssertionError(
-                    "The 'Brand' dropdown is not enabled after selecting " +
-                            "'Phone' as device type.");
+                    "The 'Brand' dropdown is not enabled after selecting device type.");
         }
     }
-
-    public void selectBrand() {
+    public void selectBrand(String brand) {
         wait.until(ExpectedConditions.elementToBeClickable(brandDropdown));
         dropdown = new Select(brandDropdown);
-        dropdown.selectByVisibleText("Apple");
+        dropdown.selectByVisibleText(brand);
     }
 
     public void devicePreviewPanelDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(imagePreview));
         if (!imagePreview.isDisplayed()) {
             throw new AssertionError(
-                    "The device preview panel is not displayed after selecting" +
-                            " 'Apple' as brand.");
+                    "The device preview panel is not displayed after selecting brand.");
         }
     }
 
@@ -90,9 +87,8 @@ public class InventoryFormPage {
         storageSizeRadioButton.click();
     }
 
-    public void unitPriceDisplayed() {
+    public void unitPriceDisplayed(String expectedPrice) {
         wait.until(ExpectedConditions.visibilityOf(unitPriceValue));
-        String expectedPrice = "R480.00";
         String actualPrice = unitPriceValue.getText();
         if (!actualPrice.equals(expectedPrice)) {
             throw new AssertionError(
@@ -100,15 +96,13 @@ public class InventoryFormPage {
         }
     }
 
-    public void selectColor() {
+    public void selectColor(String color) {
         wait.until(ExpectedConditions.elementToBeClickable(colorDropdown));
         dropdown = new Select(colorDropdown);
-        dropdown.selectByVisibleText("Blue");
+        dropdown.selectByVisibleText(color);
     }
-
-    public void colorSelectionApplied() {
+    public void colorSelectionApplied(String expectedColor) {
         wait.until(ExpectedConditions.visibilityOf(deviceColor));
-        String expectedColor = "blue";
         String actualColor = deviceColor.getText();
         if (!actualColor.equals(expectedColor)) {
             throw new AssertionError(
@@ -116,15 +110,14 @@ public class InventoryFormPage {
         }
     }
 
-    public void enterQuantity() {
+    public void enterQuantity(String quantity) {
         wait.until(ExpectedConditions.visibilityOf(quantityInputField));
         quantityInputField.clear();
-        quantityInputField.sendKeys("2");
+        quantityInputField.sendKeys(quantity);
     }
 
-    public void subtotalDisplayed() {
+    public void subtotalDisplayed(String expectedSubtotal) {
         wait.until(ExpectedConditions.visibilityOf(subtotalValue));
-        String expectedSubtotal = "R960.00";
         String actualSubtotal = subtotalValue.getText();
         if (!actualSubtotal.equals(expectedSubtotal)) {
             throw new AssertionError(
@@ -132,15 +125,14 @@ public class InventoryFormPage {
         }
     }
 
-    public void enterAddress() {
+    public void enterAddress(String address) {
         wait.until(ExpectedConditions.visibilityOf(addressInputField));
         addressInputField.clear();
-        addressInputField.sendKeys("123 Test Street");
+        addressInputField.sendKeys(address);
     }
 
-    public void addressFieldIsFilled() {
+    public void addressFieldIsFilled(String expectedAddress) {
         wait.until(ExpectedConditions.visibilityOf(addressInputField));
-        String expectedAddress = "123 Test Street";
         String actualAddress = addressInputField.getAttribute("value");
         if (!actualAddress.equals(expectedAddress)) {
             throw new AssertionError(
