@@ -1,7 +1,6 @@
 package Base;
 
-import Pages.LoginPage;
-import Pages.LearnPage;
+import Pages.*;
 import Utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 
@@ -14,6 +13,9 @@ public class BaseTest {
 
     public final WebDriver driver = BrowserFactory.startBrowser(browserChoice, url);
     public LoginPage loginPage = new LoginPage(driver);
-    public LearnPage learnPage = new LearnPage(driver);
+    public LearnNavigationPage learnNavigationPage = new LearnNavigationPage(driver);
+    public InventoryFormPage inventoryFormPage = new InventoryFormPage(driver);
+    public OrderSummaryPage orderSummaryPage = new OrderSummaryPage(driver);
+    public InvoicePage invoicePage = new InvoicePage(driver);
 
 }
