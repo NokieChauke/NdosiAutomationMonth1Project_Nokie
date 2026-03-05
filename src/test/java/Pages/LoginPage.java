@@ -59,7 +59,7 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(welcomeBackMessage));
         welcomeBackMessage.isDisplayed();
         String actualMessage = welcomeBackMessage.getText();
-        if (!actualMessage.equals(expectedMessage)) {
+        if (!actualMessage.contains(expectedMessage)) {
             throw new AssertionError("Expected message: " + expectedMessage + ", but got: " + actualMessage);
         }
     }

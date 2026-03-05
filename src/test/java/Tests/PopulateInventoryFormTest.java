@@ -6,9 +6,12 @@ import org.testng.annotations.Test;
 public class PopulateInventoryFormTest extends LoginTest {
 
     @Test(dataProvider = "inventoryData", dataProviderClass = TestDataProvider.class)
-    public void inventoryFormTest(String deviceType, String brand, String unitPrice, String color, String colorValue, String quantity, String subtotal, String address) {
+    public void inventoryFormTest(String email, String password, String expectedMessage,
+                                  String deviceType, String brand, String unitPrice, String color,
+                                  String colorValue, String quantity, String subtotal, String address) {
 
-        loginWithDefaultCredentials();
+        loginWithValidDetails(email, password, expectedMessage);
+
         learnNavigationPage.goToLearnPage();
         learnNavigationPage.viewLearningMaterials();
         learnNavigationPage.openWebAdvanceAutomationPage();

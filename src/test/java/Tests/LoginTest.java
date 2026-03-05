@@ -16,11 +16,4 @@ public class LoginTest extends BaseTest {
         loginPage.verifyLoginSuccess(expectedMessage);
     }
 
-    public void loginWithDefaultCredentials() {
-        loginPage.clickLoginButton();
-        loginPage.enterEmailAddress("nokietest@mail.com");
-        loginPage.enterPassword("125abc!Test");
-        loginPage.clickSubmitButton();
-        loginPage.verifyLoginSuccess("Welcome back, Nokie! \uD83D\uDC4B");
-    }
 }

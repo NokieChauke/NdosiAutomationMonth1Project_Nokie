@@ -1,2 +1,2 @@
-DeviceType,Brand,StorageSize,UnitPrice,Color,ColorValue,Quantity,Subtotal,Address
-Phone,Apple,128GB,R480.00,Blue,blue,2,R960.00,123 Test Street
+DeviceType,Brand,StorageSize,UnitPrice,Color,ColorValue,Quantity,Subtotal,Address,Email,Password,ExpectedMessage
+Phone,Apple,128GB,R480.00,Blue,blue,2,R960.00,123 Test Street,nokietest@mail.com,125abc!Test,Welcome back, Nokie! 😀
