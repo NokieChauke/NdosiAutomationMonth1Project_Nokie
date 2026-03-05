@@ -8,6 +8,7 @@ public class PopulateInventoryFormTest extends LoginTest {
     @Test
     public void navigateToTestimonialsPage() throws InterruptedException {
         loginWithValidDetails();
+        Thread.sleep(2000);
         learnPage.goToLearnPage();
         Thread.sleep(2000);
         learnPage.viewLearningMaterials();

@@ -113,13 +113,13 @@ public class LearnPage {
 
     public void viewAssessmentInstructions() {assessmentInstructionsDropdown.click();}
 
-    public void openInventoryForm() {webAutomationAdvanceButton.click();  }
-
-    public void inventoryFormIsDisplayed() {
-        if (!inventoryForm.isDisplayed()) {
-            throw new AssertionError("Inventory Form' is not displayed.");
-        }
-    }
+//    public void openInventoryForm() {webAutomationAdvanceButton.click();  }
+//
+//    public void inventoryFormIsDisplayed() {
+//        if (!inventoryForm.isDisplayed()) {
+//            throw new AssertionError("Inventory Form' is not displayed.");
+//        }
+//    }
 
     public void selectDeviceType() {
         dropdown = new Select(deviceTypeDropdown);
