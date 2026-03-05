@@ -3,19 +3,43 @@ package Base;
 import Pages.*;
 import Utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-
-    BrowserFactory browserFactory = new BrowserFactory();
 
     public final String url = "https://ndosisimplifiedautomation.vercel.app/";
     public final String browserChoice = "chrome";
 
-    public final WebDriver driver = BrowserFactory.startBrowser(browserChoice, url);
-    public LoginPage loginPage = new LoginPage(driver);
-    public LearnNavigationPage learnNavigationPage = new LearnNavigationPage(driver);
-    public InventoryFormPage inventoryFormPage = new InventoryFormPage(driver);
-    public OrderSummaryPage orderSummaryPage = new OrderSummaryPage(driver);
-    public InvoicePage invoicePage = new InvoicePage(driver);
+    public WebDriver driver;
+    public LoginPage loginPage;
+    public LearnNavigationPage learnNavigationPage;
+    public InventoryFormPage inventoryFormPage;
+    public OrderSummaryPage orderSummaryPage;
+    public InvoicePage invoicePage;
+
+    @BeforeMethod
+    public void setUp() {
+        // Initialize browser
+        driver = BrowserFactory.startBrowser(browserChoice, url);
+
+        // Initialize page objects
+        loginPage = new LoginPage(driver);
+        learnNavigationPage = new LearnNavigationPage(driver);
+        inventoryFormPage = new InventoryFormPage(driver);
+        orderSummaryPage = new OrderSummaryPage(driver);
+        invoicePage = new InvoicePage(driver);
+    }
+
+    @AfterMethod
+    public void tearDown() throws InterruptedException {
+        // Wait before closing browser to ensure all operations complete
+        Thread.sleep(1000);
+
+        // Close browser and cleanup resources
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
 }

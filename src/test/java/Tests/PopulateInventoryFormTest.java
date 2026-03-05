@@ -1,12 +1,12 @@
 package Tests;
 
-import Base.BaseTest;
 import org.testng.annotations.Test;
 
 public class PopulateInventoryFormTest extends LoginTest {
 
     @Test
-    public void navigateToTestimonialsPage() throws InterruptedException {
+    public void inventoryFormTest() throws InterruptedException {
+
         loginWithValidDetails();
         learnNavigationPage.goToLearnPage();
         learnNavigationPage.viewLearningMaterials();
