@@ -40,4 +40,16 @@ public class TestDataProvider {
         }
         return testData;
     }
+
+    @DataProvider(name = "validLoginData")
+    public static Object[][] getValidLoginData() {
+        List<Map<String, String>> data = ExcelReader.readExcelData("src/test/resources/LoginData.csv", "LoginData");
+        // Return only the first row (valid credentials)
+        Object[][] testData = new Object[1][3];
+        Map<String, String> firstRow = data.get(0);
+        testData[0][0] = firstRow.get("Email");
+        testData[0][1] = firstRow.get("Password");
+        testData[0][2] = firstRow.get("ExpectedMessage");
+        return testData;
+    }
 }

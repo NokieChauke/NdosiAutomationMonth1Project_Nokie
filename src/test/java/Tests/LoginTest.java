@@ -6,7 +6,11 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test(dataProvider = "loginData", dataProviderClass = TestDataProvider.class)
+    @Test(dataProvider = "loginData", dataProviderClass = TestDataProvider.class, groups = "login")
+    public void testLoginScenarios(String email, String password, String expectedMessage) {
+        loginWithValidDetails(email, password, expectedMessage);
+    }
+
     public void loginWithValidDetails(String email, String password, String expectedMessage) {
 
         loginPage.clickLoginButton();

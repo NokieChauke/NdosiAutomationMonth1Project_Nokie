@@ -4,7 +4,9 @@ import Pages.*;
 import Utilities.BrowserFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
 
@@ -18,7 +20,7 @@ public class BaseTest {
     public OrderSummaryPage orderSummaryPage;
     public InvoicePage invoicePage;
 
-    @BeforeMethod
+    @BeforeSuite
     public void setUp() {
         // Initialize browser
         driver = BrowserFactory.startBrowser(browserChoice, url);
@@ -31,7 +33,7 @@ public class BaseTest {
         invoicePage = new InvoicePage(driver);
     }
 
-    @AfterMethod
+    @AfterSuite
     public void tearDown() throws InterruptedException {
         // Wait before closing browser to ensure all operations complete
         Thread.sleep(1000);
