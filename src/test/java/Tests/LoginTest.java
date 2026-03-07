@@ -2,7 +2,12 @@ package Tests;
 
 import Base.BaseTest;
 import Utilities.TestDataProvider;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class LoginTest extends BaseTest {
 
@@ -17,7 +22,23 @@ public class LoginTest extends BaseTest {
         loginPage.enterEmailAddress(email);
         loginPage.enterPassword(password);
         loginPage.clickSubmitButton();
-        loginPage.verifyLoginSuccess(expectedMessage);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Check if alert is present (for invalid credentials)
+        try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            if (alertText.equals(expectedMessage)) {
+                alert.accept();
+            } else {
+                throw new AssertionError("Expected alert message: " + expectedMessage + ", but got: " + alertText);
+            }
+        } catch (Exception e) {
+            // No alert, so verify success message
+            loginPage.verifyLoginSuccess(expectedMessage);
+        }
     }
 
 }
